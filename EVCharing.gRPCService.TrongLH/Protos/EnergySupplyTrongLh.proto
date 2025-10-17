@@ -4,6 +4,10 @@ option csharp_namespace = "EVCharing.gRPCService.TrongLH";
 
 service EnergySupplyTrongLhGRPC {
   rpc GetAllAsync(EmptyRequest) returns (EnergySupplyTrongLhListList);
+  rpc GetByIdAsync(IdRequest) returns (EnergySupplyTrongLh);
+  rpc CreateAsync(EnergySupplyTrongLh) returns (EnergySupplyTrongLh);
+  rpc UpdateAsync(EnergySupplyTrongLh) returns (EnergySupplyTrongLh);
+  rpc DeleteAsync(IdRequest) returns (EmptyRequest);
 }
 
 message EmptyRequest {
@@ -26,4 +30,8 @@ message EnergySupplyTrongLh {
   double PeakCapacity = 10;
   double EfficiencyRate = 11;
   string CreatedAt = 12;
+}
+
+message IdRequest {
+  int32 id = 1;
 }

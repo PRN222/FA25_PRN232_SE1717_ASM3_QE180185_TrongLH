@@ -39,4 +39,41 @@ public class EnergySupplyTrongLhServiceGrpcService(
             throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
         }
     }
+
+    public override async Task<EnergySupplyTrongLh> GetByIdAsync(IdRequest request, ServerCallContext context)
+    {
+        try
+        {
+            var energySupply = await _service.EnergySupplyTrongLhService.GetByIdAsync(request.Id);
+
+            var opt = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+
+            var json = JsonSerializer.Serialize(energySupply, opt);
+            var result = JsonSerializer.Deserialize<EnergySupplyTrongLh>(json, opt);
+
+            return result ?? new EnergySupplyTrongLh();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error in GetByIdAsync");
+            throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
+        }
+    }
+
+    public override Task<EnergySupplyTrongLh> CreateAsync(EnergySupplyTrongLh request, ServerCallContext context)
+    {
+        try
+        {
+            throw new NotImplementedException();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Error in CreateAsync");
+            throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
+        }
+    }
 }
