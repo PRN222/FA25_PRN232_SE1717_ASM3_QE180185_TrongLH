@@ -34,21 +34,15 @@ public class EnergySupplyTrongLHRepository : GenericRepository<EnergySupplyTrong
 
         // Apply filters only if search criteria are provided
         if (!string.IsNullOrEmpty(request.SupplyType))
-        {
             query = query.Where(ev => ev.SupplyType != null && ev.SupplyType.Contains(request.SupplyType));
-        }
 
         if (request.CapacityKw.HasValue && request.CapacityKw > 0)
-        {
             query = query.Where(ev => ev.CapacityKw >= request.CapacityKw);
-        }
 
         if (!string.IsNullOrEmpty(request.StationName))
-        {
             query = query.Where(ev => ev.StationTrongLh != null &&
-                                    ev.StationTrongLh.Name != null &&
-                                    ev.StationTrongLh.Name.Contains(request.StationName));
-        }
+                                      ev.StationTrongLh.Name != null &&
+                                      ev.StationTrongLh.Name.Contains(request.StationName));
 
         // If no search criteria provided, return all records
         // This ensures we get all records when no filters are applied

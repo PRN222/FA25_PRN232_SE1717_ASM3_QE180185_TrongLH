@@ -1,7 +1,6 @@
 using EVCharging.Repositories.TrongLH.Basic;
 using EVCharging.Repositories.TrongLH.Context;
 using EVCharging.Repositories.TrongLH.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace EVCharging.Repositories.TrongLH.Repositories;
 

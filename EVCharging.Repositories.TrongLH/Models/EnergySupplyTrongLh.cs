@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EVCharging.Repositories.TrongLH.Models;
 
-public partial class EnergySupplyTrongLh
+public class EnergySupplyTrongLh
 {
     [Key] public int EnergySupplyTrongLhid { get; set; }
 

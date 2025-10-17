@@ -1,6 +1,5 @@
 using EVCharging.Repositories.TrongLH.ModelExtensions;
 using EVCharging.Repositories.TrongLH.Models;
-using EVCharging.Repositories.TrongLH.Repositories;
 using EVCharging.Repositories.TrongLH.Uow;
 using EVCharging.Services.TrongLH.Interfaces;
 

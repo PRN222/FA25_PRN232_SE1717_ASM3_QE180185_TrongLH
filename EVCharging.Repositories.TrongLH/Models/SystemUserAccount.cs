@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace EVCharging.Repositories.TrongLH.Models;
 
-namespace EVCharging.Repositories.TrongLH.Models;
-
-public partial class SystemUserAccount
+public class SystemUserAccount
 {
     public int UserAccountId { get; set; }
 

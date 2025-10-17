@@ -7,7 +7,7 @@ namespace EVCharging.Repositories.TrongLH.Repositories;
 
 public class SystemUserAccountRepository : GenericRepository<SystemUserAccount>
 {
-    public SystemUserAccountRepository() : base()
+    public SystemUserAccountRepository()
     {
     }
 

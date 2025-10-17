@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "EVCharing.gRPCService.TrongLH";
+
+service EnergySupplyTrongLhGRPC {
+  rpc GetAllAsync(EmptyRequest) returns (EnergySupplyTrongLhListList);
+}
+
+message EmptyRequest {
+}
+
+message EnergySupplyTrongLhListList {
+  repeated EnergySupplyTrongLh energySupplies = 1;
+}
+
+message EnergySupplyTrongLh {
+  int32 EnergySupplyTrongLhid = 1;
+  int32 StationTrongLhid = 2;
+  string SupplyType = 3;
+  double CapacityKw = 4;
+  double AvailableKw = 5;
+  string SourceName = 6;
+  string StartDate = 7;
+  string ContractNumber = 8;
+  bool IsRenewable = 9;
+  double PeakCapacity = 10;
+  double EfficiencyRate = 11;
+  string CreatedAt = 12;
+}

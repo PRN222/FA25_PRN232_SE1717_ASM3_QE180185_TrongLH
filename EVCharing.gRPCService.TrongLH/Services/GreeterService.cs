@@ -1,5 +1,4 @@
 using Grpc.Core;
-using EVCharing.gRPCService.TrongLH;
 
 namespace EVCharing.gRPCService.TrongLH.Services;
 

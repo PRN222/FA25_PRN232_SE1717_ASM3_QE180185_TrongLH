@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EVCharging.Repositories.TrongLH.Models;
 
-public partial class StationTrongLh
+public class StationTrongLh
 {
     [Key] public int StationTrongLhid { get; set; }
 

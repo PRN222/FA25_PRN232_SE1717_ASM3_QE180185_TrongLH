@@ -7,11 +7,24 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Protobuf Include="Protos\EnergySupplyTrongLh.proto">
+            <GrpcServices>Server</GrpcServices>
+            <Access>Public</Access>
+            <ProtoCompile>True</ProtoCompile>
+            <CompileOutputs>True</CompileOutputs>
+            <OutputDir>obj\Debug/net8.0/</OutputDir>
+            <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
         <Protobuf Include="Protos\greet.proto" GrpcServices="Server"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.57.0"/>
+        <PackageReference Include="protobuf-net" Version="3.2.56"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\EVCharging.Services.TrongLH\EVCharging.Services.TrongLH.csproj"/>
     </ItemGroup>
 
 </Project>

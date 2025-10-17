@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using EVCharging.Repositories.TrongLH.Models;
+﻿using EVCharging.Repositories.TrongLH.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -30,12 +28,15 @@ public partial class FA25_PRN232_SE1717_G2_EVChargingContext : DbContext
             .AddJsonFile("appsettings.json")
             .Build();
 
-        string? connectionString = config.GetConnectionString(connectionStringName);
+        var connectionString = config.GetConnectionString(connectionStringName);
         return connectionString;
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(GetConnectionString("DefaultConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+    {
+        optionsBuilder.UseSqlServer(GetConnectionString("DefaultConnection"))
+            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
