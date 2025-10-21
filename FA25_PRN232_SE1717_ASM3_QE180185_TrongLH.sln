@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVCharging.Services.TrongLH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVCharing.gRPCService.TrongLH", "EVCharing.gRPCService.TrongLH\EVCharing.gRPCService.TrongLH.csproj", "{1D4D7B75-26B8-4F28-AECE-0369C22502A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVCharging.ConsoleApp.TrongLH", "EVCharging.ConsoleApp.TrongLH\EVCharging.ConsoleApp.TrongLH.csproj", "{B6E20DC0-CB1D-484D-8324-D5C3B609C024}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1D4D7B75-26B8-4F28-AECE-0369C22502A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D4D7B75-26B8-4F28-AECE-0369C22502A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D4D7B75-26B8-4F28-AECE-0369C22502A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E20DC0-CB1D-484D-8324-D5C3B609C024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E20DC0-CB1D-484D-8324-D5C3B609C024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E20DC0-CB1D-484D-8324-D5C3B609C024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E20DC0-CB1D-484D-8324-D5C3B609C024}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
