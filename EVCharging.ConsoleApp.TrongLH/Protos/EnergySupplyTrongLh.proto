@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "EVCharing.ConsoleApp.TrongLH";
+
+service EnergySupplyTrongLhGRPC {
+  // Queries
+  rpc GetAllAsync(EmptyRequest) returns (EnergySupplyTrongLhListList);
+  rpc GetByIdAsync(IdRequest) returns (EnergySupplyTrongLh);
+  
+  // Mutations
+  rpc CreateAsync(EnergySupplyTrongLh) returns (MutationRelay);
+  rpc UpdateAsync(EnergySupplyTrongLh) returns (MutationRelay);
+  rpc DeleteAsync(IdRequest) returns (MutationRelay);
+}
+
+message EmptyRequest {
+}
+
+message EnergySupplyTrongLhListList {
+  repeated EnergySupplyTrongLh energySupplies = 1;
+}
+
+message EnergySupplyTrongLh {
+  int32 EnergySupplyTrongLhid = 1;
+  int32 StationTrongLhid = 2;
+  string SupplyType = 3;
+  double CapacityKw = 4;
+  double AvailableKw = 5;
+  string SourceName = 6;
+  string StartDate = 7;
+  string ContractNumber = 8;
+  bool IsRenewable = 9;
+  double PeakCapacity = 10;
+  double EfficiencyRate = 11;
+  string CreatedAt = 12;
+}
+
+message IdRequest {
+  int32 id = 1;
+}
+
+message MutationRelay {
+  int32 affectedRows = 1;
+}
