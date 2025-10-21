@@ -64,15 +64,69 @@ public class EnergySupplyTrongLhServiceGrpcService(
         }
     }
 
-    public override Task<EnergySupplyTrongLh> CreateAsync(EnergySupplyTrongLh request, ServerCallContext context)
+    public override async Task<MutationRelay> CreateAsync(EnergySupplyTrongLh request, ServerCallContext context)
     {
         try
         {
-            throw new NotImplementedException();
+            var opt = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+
+            var energySupplyEntity = JsonSerializer.Serialize(request, opt);
+            var item =
+                JsonSerializer.Deserialize<EVCharging.Repositories.TrongLH.Models.EnergySupplyTrongLh>(
+                    energySupplyEntity, opt);
+            if (item == null) throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid payload"));
+            // Ensure EF treats this as a new entity with DB-generated identity
+            item.EnergySupplyTrongLhid = null;
+
+            var createdEnergySupply = await _service.EnergySupplyTrongLhService.CreateAsync(item);
+            return new MutationRelay { AffectedRows = createdEnergySupply };
         }
         catch (Exception e)
         {
             _logger.LogError(e, "Error in CreateAsync");
+            throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
+        }
+    }
+
+    public override async Task<MutationRelay> UpdateAsync(EnergySupplyTrongLh request, ServerCallContext context)
+    {
+        try
+        {
+            var opt = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+
+            var energySupplyEntity = JsonSerializer.Serialize(request, opt);
+            var item =
+                JsonSerializer.Deserialize<EVCharging.Repositories.TrongLH.Models.EnergySupplyTrongLh>(
+                    energySupplyEntity, opt);
+
+            var createdEnergySupply = await _service.EnergySupplyTrongLhService.UpdateAsync(item);
+            return new MutationRelay { AffectedRows = createdEnergySupply };
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Error in CreateAsync");
+            throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
+        }
+    }
+
+    public override async Task<MutationRelay> DeleteAsync(IdRequest request, ServerCallContext context)
+    {
+        try
+        {
+            var deletedEnergySupply = await _service.EnergySupplyTrongLhService.DeleteAsync(request.Id);
+            return new MutationRelay { AffectedRows = deletedEnergySupply ? 1 : 0 };
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Error in DeleteAsync");
             throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
         }
     }

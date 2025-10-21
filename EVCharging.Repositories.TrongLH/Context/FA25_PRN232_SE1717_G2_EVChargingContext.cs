@@ -44,7 +44,9 @@ public partial class FA25_PRN232_SE1717_G2_EVChargingContext : DbContext
         {
             entity.ToTable("EnergySupplyTrongLh");
 
-            entity.Property(e => e.EnergySupplyTrongLhid).HasColumnName("EnergySupplyTrongLHId");
+            entity.Property(e => e.EnergySupplyTrongLhid)
+                .HasColumnName("EnergySupplyTrongLHId")
+                .ValueGeneratedOnAdd();
             entity.Property(e => e.AvailableKw).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.CapacityKw).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.ContractNumber).HasMaxLength(50);

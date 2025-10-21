@@ -3,11 +3,14 @@ syntax = "proto3";
 option csharp_namespace = "EVCharing.gRPCService.TrongLH";
 
 service EnergySupplyTrongLhGRPC {
+  // Queries
   rpc GetAllAsync(EmptyRequest) returns (EnergySupplyTrongLhListList);
   rpc GetByIdAsync(IdRequest) returns (EnergySupplyTrongLh);
-  rpc CreateAsync(EnergySupplyTrongLh) returns (EnergySupplyTrongLh);
-  rpc UpdateAsync(EnergySupplyTrongLh) returns (EnergySupplyTrongLh);
-  rpc DeleteAsync(IdRequest) returns (EmptyRequest);
+  
+  // Mutations
+  rpc CreateAsync(EnergySupplyTrongLh) returns (MutationRelay);
+  rpc UpdateAsync(EnergySupplyTrongLh) returns (MutationRelay);
+  rpc DeleteAsync(IdRequest) returns (MutationRelay);
 }
 
 message EmptyRequest {
@@ -34,4 +37,8 @@ message EnergySupplyTrongLh {
 
 message IdRequest {
   int32 id = 1;
+}
+
+message MutationRelay {
+  int32 affectedRows = 1;
 }

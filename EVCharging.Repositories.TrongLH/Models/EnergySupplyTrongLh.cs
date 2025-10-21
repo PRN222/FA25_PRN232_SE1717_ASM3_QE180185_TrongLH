@@ -4,7 +4,7 @@ namespace EVCharging.Repositories.TrongLH.Models;
 
 public class EnergySupplyTrongLh
 {
-    [Key] public int EnergySupplyTrongLhid { get; set; }
+    [Key] public int? EnergySupplyTrongLhid { get; set; }
 
     public int StationTrongLhid { get; set; }
 
