@@ -1,0 +1,101 @@
+@model EVCharging.WebApp.TrongLH.Models.EnergySupplyViewModel
+
+@{
+    ViewData["Title"] = "Energy Supply Details";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Energy Supply Details</h3>
+                    <div class="card-tools">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="row">
+                                <dt class="col-sm-4">ID:</dt>
+                                <dd class="col-sm-8">@Model.EnergySupplyTrongLhid</dd>
+
+                                <dt class="col-sm-4">Station:</dt>
+                                <dd class="col-sm-8">
+                                    <span class="badge bg-primary">@Model.StationName</span>
+                                </dd>
+
+                                <dt class="col-sm-4">Supply Type:</dt>
+                                <dd class="col-sm-8">
+                                    <span class="badge bg-info">@Model.SupplyType</span>
+                                </dd>
+
+                                <dt class="col-sm-4">Source Name:</dt>
+                                <dd class="col-sm-8">@Model.SourceName</dd>
+
+                                <dt class="col-sm-4">Contract Number:</dt>
+                                <dd class="col-sm-8">@(Model.ContractNumber ?? "N/A")</dd>
+
+                                <dt class="col-sm-4">Is Renewable:</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.IsRenewable)
+                                    {
+                                        <span class="badge bg-success">Yes</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">No</span>
+                                    }
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="row">
+                                <dt class="col-sm-4">Capacity (kW):</dt>
+                                <dd class="col-sm-8">@Model.CapacityKw.ToString("N2")</dd>
+
+                                <dt class="col-sm-4">Available (kW):</dt>
+                                <dd class="col-sm-8">@Model.AvailableKw.ToString("N2")</dd>
+
+                                <dt class="col-sm-4">Peak Capacity (kW):</dt>
+                                <dd class="col-sm-8">@(Model.PeakCapacity?.ToString("N2") ?? "N/A")</dd>
+
+                                <dt class="col-sm-4">Efficiency Rate (%):</dt>
+                                <dd class="col-sm-8">@(Model.EfficiencyRate?.ToString("N1") ?? "N/A")</dd>
+
+                                <dt class="col-sm-4">Start Date:</dt>
+                                <dd class="col-sm-8">@(Model.StartDate ?? "N/A")</dd>
+
+                                <dt class="col-sm-4">Created At:</dt>
+                                <dd class="col-sm-8">@(Model.CreatedAt ?? "N/A")</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left"></i> Back to List
+                                </a>
+                                <div>
+                                    <a asp-action="Edit" asp-route-id="@Model.EnergySupplyTrongLhid"
+                                        class="btn btn-warning">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@Model.EnergySupplyTrongLhid"
+                                        class="btn btn-danger">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

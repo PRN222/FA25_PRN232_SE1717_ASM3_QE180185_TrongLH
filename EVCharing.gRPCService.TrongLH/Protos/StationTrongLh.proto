@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "EVCharing.gRPCService.TrongLH";
+
+package stationtronglh;
+
+service StationTrongLhGRPC {
+  rpc GetAllAsync(StationEmptyRequest) returns (StationList);
+  rpc GetByIdAsync(StationIdRequest) returns (Station);
+}
+
+message StationEmptyRequest {}
+
+message StationIdRequest { int32 id = 1; }
+
+message Station {
+  int32 StationTrongLhid = 1;
+  string Name = 2;
+  string Code = 3;
+  string Location = 4;
+}
+
+message StationList { repeated Station stations = 1; }
+
+

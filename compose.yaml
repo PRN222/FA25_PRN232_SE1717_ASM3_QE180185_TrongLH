@@ -1,0 +1,7 @@
+﻿services:
+  evcharging.webapp.tronglh:
+    image: evcharging.webapp.tronglh
+    build:
+      context: .
+      dockerfile: EVCharging.WebApp.TrongLH/Dockerfile
+
